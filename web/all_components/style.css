@@ -1,0 +1,50 @@
+body{
+    overflow-style:auto;
+}
+.bg-custom{
+    background-color: #424242;
+}
+.navbar .nav-item:hover .nav-link{
+    background-color: #bdbdbd;
+    color: #424242;
+    border-radius: 12px;
+}
+.search-bar{
+    border-radius: 20px;
+}
+.search-btn{
+    border-radius: 50%;
+}
+.crd-ho{
+    transition-property: all;
+    transition-duration: 0.1s;
+}
+.crd-ho:hover{
+    transition-timing-function: linear;
+    transform:scale(1.1,1.1);
+     
+}
+a{
+    text-decoration: none;
+                
+}
+.back-btn{
+                text-decoration: none;
+                background-color:white;
+                color:#424242;
+                border-radius: 50%;
+                transition-property: all;
+                transition-duration: 0.1s;
+}
+.back-btn:hover{
+                transition-timing-function: linear;
+                transform:scale(1.1,1.1);
+                background-color: #e0e0e0;
+                color:#424242;
+}
+.footer{
+    width: 101%;
+    height:50px;
+    position: relative;
+   
+}
