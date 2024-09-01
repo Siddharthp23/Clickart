@@ -27,7 +27,7 @@ public interface itemDAO {
     public List<Add_Items> getWomenTraditionals();
     public List<Add_Items> getBeautyPro();
     public List<Add_Items> getMenWear();
-    
+    public List<Add_Items> getItemBySearch(String ch);
     
 
     

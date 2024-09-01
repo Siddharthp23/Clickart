@@ -749,6 +749,40 @@ public class itemDaoImpl implements itemDAO {
     }
     return list;
     }
+
+    @Override
+    public List<Add_Items> getItemBySearch(String ch) {
+        List<Add_Items> list = new ArrayList<Add_Items>();
+        Add_Items itm = null;
+        try{
+            
+            String sql = "select * from additem where name like ? or brand_name like ? or category like ? and status=? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, "%"+ch+"%");
+            ps.setString(2, "%"+ch+"%");
+            ps.setString(3, "%"+ch+"%");
+            ps.setString(4, "In-Stock");
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                itm = new Add_Items();
+                itm.setId(rs.getInt(1));
+                itm.setName(rs.getString(2));
+                itm.setBrand_name(rs.getString(3));
+                itm.setPrice(rs.getString(4));
+                itm.setCategory(rs.getString(5));
+                itm.setStatus(rs.getString(6));
+                itm.setPhoto(rs.getString(7));
+                list.add(itm);
+                
+            }
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
     
     
     

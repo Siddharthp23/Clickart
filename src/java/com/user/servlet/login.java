@@ -42,7 +42,7 @@ public class login extends HttpServlet {
             if(us!= null)
             {
                 session.setAttribute("userobj",us);
-                resp.sendRedirect("home.jsp");
+                resp.sendRedirect("index.jsp");
                 
                 
             }else
@@ -51,7 +51,7 @@ public class login extends HttpServlet {
                 resp.sendRedirect("signin.jsp");
                 
             }
-         resp.sendRedirect("home.jsp");
+         resp.sendRedirect("index.jsp");
         }
         
     }catch(Exception e){

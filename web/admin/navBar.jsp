@@ -15,8 +15,8 @@
         </div>
         <div class="col-md-3">
             <c:if test="${not empty userobj}">
-            <a href="#" class="btn btn-success text-white"><i class="fa-solid fa-user"></i>  ${ userobj.name}</a>
-            <a  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger text-white"><i class="fa-solid fa-right-from-bracket text-white"></i> Logout</a>
+            <a href="#" class="btn btn-success text-white"><i class="fa-solid fa-user" style="border-radius: 20px; border-color: #424242;"></i>  ${ userobj.name}</a>
+            <a  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger text-white" style="border-radius: 20px; border-color: #424242;"><i class="fa-solid fa-right-from-bracket text-white"></i> Logout</a>
             </c:if>
             <c:if test="${empty userobj}">
                 <a href="../signin.jsp" class="btn btn-success text-white"><i class="fa-solid fa-right-to-bracket"></i> Sign-in</a>

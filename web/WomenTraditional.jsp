@@ -7,6 +7,7 @@
 <%@page import="java.sql.Connection" %>
 <%@page import="java.util.List"%>
 <%@page import="com.entity.Add_Items"%>
+<%@page import="com.entity.user"%>
 <%@page import="com.DAO.itemDaoImpl"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +22,11 @@
         
     </head>
     <body style="background-color: #f5f5f5;" >
+        
+         <%
+           user u = (user)session.getAttribute("userobj");
+        %>
+        
         <%@include file="all_components/navBar.jsp" %>
         <!-- CAROUSEL -->   
         <div class="container-fluid back-img mt-2">
@@ -58,9 +64,34 @@
                                 <p><%=itm.getBrand_name()%></p>
                                 <p><%=itm.getCategory()%></p>
                                 <div class="row">
-                                    <a href="" class="btn btn-danger btn-sm ml-5"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <%
+                                        if(u==null)
+                                        {
+                                    %>
+                                            <a href="signin.jsp" class="btn btn-danger btn-sm ml-5"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <%
+                                        }
+                                        else{   
+                                    %>
+                                             <a href="cart?id=<%=itm.getId()%>&&uid=<%=u.getId()%>" class="btn btn-danger btn-sm ml-5"><i class="fa-solid fa-cart-shopping"></i></a>    
+                                    <%
+                                        }
+                                    %>
                                     <a href="" class="btn btn-success btn-sm ml-1"><i class="fa-solid fa-eye"></i></a>
                                     <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> <%=itm.getPrice()%></a>
+                                    <%
+                                        if(u==null)
+                                        {
+                                    %>
+                                            <a href="signin.jsp" class="btn  text-white btn-sm ml-1" style="border-radius: 20px; border-color: #424242;" ><i class="fa-regular fa-heart" style="color:black;"></i></a>
+                                    <%
+                                        }
+                                        else{   
+                                    %>
+                                             <a href="favourite?id=<%=itm.getId()%>&&uid=<%=u.getId()%>" class="btn  text-white btn-sm ml-1" style="border-radius: 20px; border-color: #424242;" ><i class="fa-regular fa-heart" style="color:black;"></i></a>    
+                                    <%
+                                        }
+                                    %> 
                                 </div>
                             </div>
                             </div>
