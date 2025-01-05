@@ -130,7 +130,7 @@ to {
         </div>
         <script src="all_components/carousel.js"></script>
         
-         <div class="container-fluid  mt-3">
+        <div class="container-fluid  mt-3">
              <h3 class="text-center">Season's Style</h3>
              <div class="carousel">
                 <div class="carousel-inner">
@@ -209,6 +209,7 @@ to {
                     </div>
                  <hr>
              </div>
+        </div>                
              
              <!-- WOMEN -->
              

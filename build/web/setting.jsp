@@ -66,7 +66,7 @@
             if(u == null)
             {
         %>
-        <div class="containerr mt-2">
+        <div class="container mt-2">
             <h2 class="text-center">Settings</h2>
             <div class="row p-5">
                 <div class="col-md-6">
@@ -109,7 +109,7 @@
                         <div class="card">
                             <div class="card-body text-center">
                                <i class="fa-solid fa-box-open fa-3x" style="color: #424242;"></i>
-                               <h4 style="color:#424242;">Your Orders</h4>
+                               <h4 style="color:#424242;">My Orders</h4>
                                <h6 style="color:grey;">Track Order</h6>
                             </div>
                         </div>
@@ -174,11 +174,11 @@
                 </div>
                 
                 <div class="col-md-4 mt-3">
-                    <a href="">
+                    <a href="order.jsp">
                         <div class="card">
                             <div class="card-body text-center">
                                <i class="fa-solid fa-box-open fa-3x" style="color: #424242;"></i>
-                               <h4 style="color:#424242;">Your Orders</h4>
+                               <h4 style="color:#424242;">My Orders</h4>
                                <h6 style="color:grey;">Track Order</h6>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                     <a href="">
                         <div class="card">
                             <div class="card-body text-center">
-                               <a data-toggle="modal" data-target="#exampleModalCenter" class="btn  text-white" style="border-radius: 20px; border-color: #424242; background-color: grey; "><i class="fa-solid fa-right-from-bracket text-white"></i> Logout</a>
+                               <a data-toggle="modal" data-target="#exampleModalCenter" class="btn  text-white" style="border-radius: 20px; border-color: #424242; background-color: #D22B2B; "><i class="fa-solid fa-right-from-bracket text-white"></i> Logout</a>
                 
                             </div>
                         </div>

@@ -51,7 +51,7 @@ public class login extends HttpServlet {
                 resp.sendRedirect("signin.jsp");
                 
             }
-         resp.sendRedirect("index.jsp");
+            resp.sendRedirect("index.jsp/*");
         }
         
     }catch(Exception e){

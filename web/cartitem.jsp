@@ -5,6 +5,8 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.entity.Cart"%>
+<%@page import="com.entity.Add_Items"%>
+<%@page import="com.DAO.itemDaoImpl"%>
 <%@page import="com.entity.user"%>
 <%@page import="com.DAO.CartDaoImpl"%>
 <%@page import="com.DB.DBConnect"%>
@@ -29,7 +31,7 @@
     </c:if>
         
     <c:if test="${not empty deleteSuccess}">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success text-center" role="alert">
           ${deleteSuccess}  
         </div>
         <c:remove var="deleteSuccess" scope="session"></c:remove>
@@ -37,15 +39,21 @@
     </c:if>
         
         <c:if test="${not empty deleteFailed}">
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger text-center" role="alert">
           ${deleteFailed}  
         </div>
         <c:remove var="deleteFailed" scope="session"></c:remove>
         
     </c:if>
+    <c:if test="${not empty failed}">
+        <div class="alert alert-danger text-center" role="alert">
+          ${failed}  
+        </div>
+        <c:remove var="failed" scope="session"></c:remove>
         
-        <div class="container">
-            <div class="row p-3 ml-5">
+    </c:if>
+        <div class="container" >
+            <div class="row p-2 ml-2"  >
                 <div clas="col-md-6">
                     
                     <div class="card">
@@ -54,6 +62,7 @@
                                 <table class="table">
                                     <thead class="thead-dark">
                                       <tr>
+                                        <th scope="col">Image</th>  
                                         <th scope="col">Item-Name</th>
                                         <th scope="col">Brand</th>
                                         <th scope="col">Price</th>
@@ -68,12 +77,16 @@
                                         CartDaoImpl dao = new CartDaoImpl(DBConnect.getConn());
                                         List<Cart> cart = dao.getByUser(u.getId());
                                         Double totalPrice=0.00;
+                                        itemDaoImpl dao1 = new itemDaoImpl(DBConnect.getConn()); 
                                         
-                                        for(Cart c : cart)
+                                       
+                                         for(Cart c : cart)
                                         {
                                         totalPrice = totalPrice + c.getTotal_price();
+                                        Add_Items ad = dao1.getItemById(c.getId());
                                         %>
                                         <tr>
+                                        <td><img src="all_components/card-img/<%=ad.getPhoto()%>" style="width: 60px; height: 60px; border-radius: 3px;"/></td>
                                         <th scope="row"><%=c.getItem_name()%></th>
                                         <td><%=c.getBrand_name()%></td>
                                         <td><%=c.getPrice()%></td>
@@ -83,7 +96,7 @@
                                       </tr>
                                         
                                         <%}
-                                        
+                                    
                                         %>
                                         <tr>
                                             <td>Total Amount</td>
@@ -101,60 +114,62 @@
                 
                 
                 
-                <div class="col-md-6">
+                    <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="text-center text-success">User Details</h3>
-                            <form>
+                            <form action="order" method="post">
+                                <input type="hidden" value="<%=u.getId()%>" name="id">
+                                
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                      <label for="inputEmail4">Name</label>
-                                      <input type="text" class="form-control" id="inputEmail4" value="<%=u.getName()%>">
+                                        <label for="inputEmail4">Name</label> 
+                                      <input type="text" name="username" class="form-control" id="inputEmail4" value="<%=u.getName()%>" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                      <label for="inputPassword4">Email</label>
-                                      <input type="email" class="form-control" id="inputPassword4" value="<%=u.getEmail()%>">
+                                      <label for="inputPassword4">Email</label> 
+                                      <input type="email" name="email" class="form-control" id="inputPassword4" value="<%=u.getEmail()%>" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                       <label for="inputEmail4">Contact No.</label>
-                                      <input type="number" class="form-control" id="inputEmail4" value="<%=u.getPhoneno()%>">
+                                      <input type="number" name="phno" class="form-control" id="inputEmail4" value="<%=u.getPhoneno()%>" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                       <label for="inputPassword4">Address</label>
-                                      <input type="text" class="form-control" id="inputPassword4" >
+                                      <input type="text" name="address" class="form-control" id="inputPassword4" required >
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                       <label for="inputEmail4">landmark</label>
-                                      <input type="text" class="form-control" id="inputEmail4">
+                                      <input type="text" name="landmark" class="form-control" id="inputEmail4" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                       <label for="inputPassword4">City</label>
-                                      <input type="text" class="form-control" id="inputPassword4">
+                                      <input type="text" name="city" class="form-control" id="inputPassword4" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                       <label for="inputEmail4">State</label>
-                                      <input type="text" class="form-control" id="inputEmail4">
+                                      <input type="text" name="state" class="form-control" id="inputEmail4" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                       <label for="inputPassword4">Pin Code</label>
-                                      <input type="text" class="form-control" id="inputPassword4">
+                                      <input type="text" name="pincode" class="form-control" id="inputPassword4" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label>Paymet Mode</label>
-                                    <select class="form-control">
-                                        <option>Cash On delivery   <i class="fa-solid fa-money-bill-1-wave"></i></option>
-                                        <option>UPI  <i class="fa-brands fa-cc-amazon-pay"></i></option>
-                                        <option>Credit or debit card  <i class="fa-regular fa-credit-card"></i></option>
-                                        <option>EMI  <i class="fa-solid fa-calculator"></i></option>
-                                        <option>Net Banking  <i class="fa-solid fa-building-columns"></i></option>
+                                    <select class="form-control" name="payment">
+                                        <option value="COD">Cash On delivery</option>
+                                        <option>UPI  </option>
+                                        <option>Credit or debit card  </option>
+                                        <option>EMI  </option>
+                                        <option>Net Banking  </option>
                                     </select>
                                 </div>
                                 

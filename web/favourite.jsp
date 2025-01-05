@@ -6,6 +6,8 @@
 <%@page import="java.util.List"%>
 <%@page import="com.entity.favourite"%>
 <%@page import="com.entity.user"%>
+<%@page import="com.entity.Add_Items"%>
+<%@page import="com.DAO.itemDaoImpl"%>
 <%@page import="com.DAO.FavDaoImpl"%>
 <%@page import="com.DB.DBConnect"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -36,6 +38,7 @@
                                 <table class="table">
                                     <thead class="thead-dark">
                                       <tr>
+                                        <th scope="col">Image</th>  
                                         <th scope="col">Item-Name</th>
                                         <th scope="col">Brand</th>
                                         <th scope="col">Price</th>
@@ -64,11 +67,14 @@
                                             
                                         FavDaoImpl dao = new FavDaoImpl(DBConnect.getConn());
                                         List<favourite> list = dao.getByUser(u.getId());
+                                        itemDaoImpl dao1 = new itemDaoImpl(DBConnect.getConn());
                                         for(favourite fav : list)
-                                        {
                                         
+                                        {
+                                        Add_Items ad = dao1.getItemById(fav.getId());
                                         %>
                                         <tr>
+                                        <td><img src="all_components/card-img/<%=ad.getPhoto()%>" style="width: 60px; height: 70px; border-radius: 3px;"/></td>    
                                         <th scope="row"><%=fav.getItem_name()%></th>
                                         <td><%=fav.getBrand_name()%></td>
                                         <td><%=fav.getPrice()%></td>

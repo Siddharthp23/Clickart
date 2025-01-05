@@ -8,12 +8,23 @@
         <div class="col-md-3">
             <h3><i class="fa-solid fa-bag-shopping"></i> ClicKart</h3>
         </div>
-        <div class="col-md-6">
-            <form class="form-inline my-2 my-lg-0" action="search.jsp" method="post">
-                <input class="form-control search-bar mr-sm-2" type="search" name="ch" style="width: 70vh;" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary search-btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div class="col-md-5">
+            <form class="form-inline my-3 my-lg-0" action="search.jsp" method="post">
+                <div id="converText">
+                    <textarea class="form-control search-bar mr-sm-2" id="converText" type="search" name="ch" style="width: 70vh; height: 7vh;" placeholder="Search" aria-label="Search"></textarea>
+               </div>
+                <%-- --%>
+                <button class="btn btn-primary search-btn my-2 my-sm-0" type="submit" style="border: 50%;"><i class="fa-solid fa-magnifying-glass"></i></button>
+<!--                <button class="btn btn-primary search-bar my-2 my-sm-0" id="click_to_convert"><i class="fa-solid fa-microphone"></i></button>-->
+                
             </form>
+                
         </div>
+        <div class="">
+            <button class="btn btn-primary search-btn  my-sm-1" id="click_to_convert" type=""><i class="fa-solid fa-microphone"></i></button>
+        
+        </div>
+                
         
         <c:if test="${not empty userobj}">
                 <div class="col-md-3 mr-auto">
@@ -120,3 +131,4 @@
     </form>
   </div>
 </nav>
+<script type="text/javascript" src="all_components/SpeechToText.js"></script>

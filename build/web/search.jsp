@@ -26,7 +26,7 @@
         <%
            user u = (user)session.getAttribute("userobj");
         %>
-        
+<!--         <script type="text/javascript" src="all_components/SpeechToText.js"></script>    -->
         <%@include file="all_components/navBar.jsp" %>
         
         <div class="container-fluid  mt-3">
@@ -104,5 +104,6 @@
              
              <hr>
     <%@include file="all_components/footer.jsp" %>
+   
     </body>
 </html>

@@ -16,6 +16,10 @@
         <servlet-name>searchItem</servlet-name>
         <servlet-class>com.user.servlet.searchItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Order_Servlet</servlet-name>
+        <servlet-class>com.user.servlet.Order_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>searchItem</servlet-name>
         <url-pattern>/searchItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Order_Servlet</servlet-name>
+        <url-pattern>/Order_Servlet</url-pattern>
     </servlet-mapping>
     <jsp-config>
         <taglib>
